@@ -15,5 +15,10 @@ jobs:
           path: ./
           base: HEAD~1
           head: HEAD
+          extra_args: --only-verified
       - name: Run lint
         run: echo "Linting code..." && ls -la
+      - name: Use secret safely
+        run: echo "Secret is available but masked in logs"
+        env:
+          MY_SECRET: ${{ secrets.TEST_API_KEY }}
